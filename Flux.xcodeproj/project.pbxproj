@@ -11,7 +11,6 @@
 		D64C148E280310C100137502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D64C148D280310C100137502 /* Assets.xcassets */; };
 		D64C1494280310C100137502 /* Flux WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D64C1493280310C100137502 /* Flux WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D64C1499280310C100137502 /* FluxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C1498280310C100137502 /* FluxApp.swift */; };
-		D64C149B280310C100137502 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C149A280310C100137502 /* ContentView.swift */; };
 		D64C149D280310C100137502 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C149C280310C100137502 /* NotificationController.swift */; };
 		D64C149F280310C100137502 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C149E280310C100137502 /* NotificationView.swift */; };
 		D64C14A1280310C100137502 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C14A0280310C100137502 /* ComplicationController.swift */; };
@@ -23,7 +22,7 @@
 		D64C14BF2803164500137502 /* SetGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C14BE2803164500137502 /* SetGoalView.swift */; };
 		D64C14C12803168E00137502 /* ButtonTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C14C02803168E00137502 /* ButtonTextStyle.swift */; };
 		D64C14C3280316CA00137502 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C14C2280316CA00137502 /* Constants.swift */; };
-		D64C14C928031A8000137502 /* changeAmountButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C14C828031A8000137502 /* changeAmountButtonView.swift */; };
+		D64C14C928031A8000137502 /* ChangGoalTimeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C14C828031A8000137502 /* ChangGoalTimeButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +73,6 @@
 		D64C148D280310C100137502 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D64C1493280310C100137502 /* Flux WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Flux WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64C1498280310C100137502 /* FluxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluxApp.swift; sourceTree = "<group>"; };
-		D64C149A280310C100137502 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D64C149C280310C100137502 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		D64C149E280310C100137502 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		D64C14A0280310C100137502 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -88,7 +86,7 @@
 		D64C14BE2803164500137502 /* SetGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalView.swift; sourceTree = "<group>"; };
 		D64C14C02803168E00137502 /* ButtonTextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTextStyle.swift; sourceTree = "<group>"; };
 		D64C14C2280316CA00137502 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		D64C14C828031A8000137502 /* changeAmountButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changeAmountButtonView.swift; sourceTree = "<group>"; };
+		D64C14C828031A8000137502 /* ChangGoalTimeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangGoalTimeButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				D64C1498280310C100137502 /* FluxApp.swift */,
-				D64C149A280310C100137502 /* ContentView.swift */,
 				D64C14C728031A2F00137502 /* Screens */,
 				D64C14C628031A0700137502 /* Utilities */,
 				D64C14C4280319EA00137502 /* Views */,
@@ -180,8 +177,8 @@
 		D64C14C5280319F700137502 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				D64C14C02803168E00137502 /* ButtonTextStyle.swift */,
-				D64C14C828031A8000137502 /* changeAmountButtonView.swift */,
+				D64C14C828031A8000137502 /* ChangGoalTimeButton.swift */,
+				D64C14CA2803441000137502 /* Styles */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -200,6 +197,14 @@
 				D64C14BE2803164500137502 /* SetGoalView.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		D64C14CA2803441000137502 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				D64C14C02803168E00137502 /* ButtonTextStyle.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,8 +337,7 @@
 				D64C149D280310C100137502 /* NotificationController.swift in Sources */,
 				D64C14BD2803117300137502 /* Data.xcdatamodeld in Sources */,
 				D64C14C12803168E00137502 /* ButtonTextStyle.swift in Sources */,
-				D64C149B280310C100137502 /* ContentView.swift in Sources */,
-				D64C14C928031A8000137502 /* changeAmountButtonView.swift in Sources */,
+				D64C14C928031A8000137502 /* ChangGoalTimeButton.swift in Sources */,
 				D64C14A1280310C100137502 /* ComplicationController.swift in Sources */,
 				D64C1499280310C100137502 /* FluxApp.swift in Sources */,
 				D64C149F280310C100137502 /* NotificationView.swift in Sources */,

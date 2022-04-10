@@ -13,8 +13,8 @@ extension Color {
 }
 
 enum UserdefaultKeys {
-    static let goal     = "Goal"
-    static let focused  = "Focused"
+    static let goal             = "Goal"
+    static let focused          = "Focused"
 }
 
 enum SFSymbols {

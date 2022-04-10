@@ -7,20 +7,22 @@
 
 import SwiftUI
 
-struct changeAmountButtonView: View {
+struct ChangGoalTimeButton: View {
     var imageName: String
     
     var body: some View {
         Image(systemName: imageName)
             .foregroundColor(.brandPrimary)
-            .font(.system(size: 35))
+            .font(.system(size: 38))
             .font(Font.body.weight(.ultraLight))
+            .padding()
+            .background(Color.black)
     }
 }
 
 
-struct changeAmountButtonView_Previews: PreviewProvider {
+struct ChangGoalTimeButton_Previews: PreviewProvider {
     static var previews: some View {
-        changeAmountButtonView(imageName: SFSymbols.plus)
+        ChangGoalTimeButton(imageName: SFSymbols.plus)
     }
 }

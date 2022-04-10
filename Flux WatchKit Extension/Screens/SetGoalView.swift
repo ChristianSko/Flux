@@ -9,66 +9,74 @@ import SwiftUI
 
 struct SetGoalView: View {
     
-    @State var goalTime = 0
+    @State var goalTime: Double = 990
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
-        VStack(spacing: 25){
-
-            Text("DAILY FOCUS GOAL")
-                .font(.system(size: 16, design: .rounded))
-                .fontWeight(.light)
-                .foregroundColor(Color.brandPrimary)
+        VStack(spacing: 20){
+            
+            fxlabel(text: "DAILY FOCUS GOAL",
+                    fontweight: .light,
+                    type: .headline)
+            .padding(.top, 10.0)
             
             VStack{
                 HStack {
-                    Button(action: {
-                        if self.goalTime > 0 {
-                            self.goalTime -= 5
-                            print(goalTime)
-                         }
-                    }) {
-                        changeAmountButtonView(imageName: SFSymbols.minus)
-                    }
-                    
+                    Button(action: {substractMinutes()}, label:  {
+                        ChangGoalTimeButton(imageName: SFSymbols.minus)
+                    })
+
                     Text("\(Int(goalTime))")
                         .font(.system(size: 45, design: .rounded))
                         .fontWeight(.bold)
-                        .foregroundColor(Color.white)
-                        .multilineTextAlignment(.center)
                         .lineLimit(1)
-                        .frame(width: 85, height: 30, alignment: .center) // to review
-                        
-//                        .layoutPriority(1) //to review
-//                        .focusable(true)
-//                        .digitalCrownRotation($goalTime, from: 0, through: 990, by: 5, sensitivity: .medium, isContinuous: true, isHapticFeedbackEnabled: true)
+                        .frame(width: 85)
+                        .focusable(true)
+                        .digitalCrownRotation($goalTime)
                     
-                    
-                    
-                    Button(action: {
-                        if self.goalTime < 990 {
-                           self.goalTime += 5
-                            print(goalTime)
-                        }
-                    }) {
-                        changeAmountButtonView(imageName: SFSymbols.plus)
-                    }
+                    Button(action: { addMinutes() }, label:  {
+                        ChangGoalTimeButton(imageName: SFSymbols.plus)
+                    })
+
                 }
                 
-                fxlabel(text: "Minutes", fontweight: .semibold)
-                    .padding(.top, -5.0)
+                fxlabel(text: "Minutes",
+                        fontweight: .semibold,
+                        type: .body)
+                    .padding(.top, -10.0)
             }
             
             Button(action: {
-                UserDefaults.standard.set(self.goalTime, forKey: UserdefaultKeys.goal)
-                self.mode.wrappedValue.dismiss()
-                
-            }) {
-            ButtonTextStyle(title: "Update")
-            }
-            .background(Color.brandPrimary)
-            .cornerRadius(50)
+                addMinutes()
+                dismissScreen()
+            }, label:  {
+                ButtonTextStyle(title: "Update")
+            })
+            .buttonStyle(.borderedProminent)
+            .tint(.blue)
         }
+    }
+    
+    
+    func addMinutes() {
+        if self.goalTime < 990 {
+            self.goalTime += 5
+        }
+    }
+    
+    func substractMinutes() {
+        if self.goalTime > 0 {
+            self.goalTime -= 5
+         }
+    }
+    
+    func dismissScreen() {
+        self.mode.wrappedValue.dismiss()
+    }
+    
+    func saveGoalTime() {
+        // TO DO: Replace with CoreData
+        UserDefaults.standard.set(self.goalTime, forKey: UserdefaultKeys.goal)
     }
 }
 
@@ -82,14 +90,14 @@ struct fxlabel: View {
     
     let text: String
     let fontweight: Font.Weight
+    let type: Font
     
     var body: some View {
     
         Text(text)
-            .font(.system(.body, design: .rounded))
+            .font(type)
             .fontWeight(fontweight)
             .foregroundColor(Color.brandPrimary)
-            .padding(.top, -5.0)
         
     }
 }
