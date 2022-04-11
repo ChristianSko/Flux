@@ -37,7 +37,6 @@ struct SetGoalView: View {
                     Button(action: { addMinutes() }, label:  {
                         ChangGoalTimeButton(imageName: SFSymbols.plus)
                     })
-
                 }
                 
                 fxlabel(text: "Minutes",
@@ -83,21 +82,5 @@ struct SetGoalView: View {
 struct SetGoalView_Previews: PreviewProvider {
     static var previews: some View {
         SetGoalView()
-    }
-}
-
-struct fxlabel: View {
-    
-    let text: String
-    let fontweight: Font.Weight
-    let type: Font
-    
-    var body: some View {
-    
-        Text(text)
-            .font(type)
-            .fontWeight(fontweight)
-            .foregroundColor(Color.brandPrimary)
-        
     }
 }
