@@ -18,7 +18,7 @@ struct SessionView: View {
     
     var body: some View {
         ScrollView{
-            VStack() {
+            VStack {
                 HStack{
                     ForEach(0..<2) {sessions in
                         VStack{
@@ -38,13 +38,12 @@ struct SessionView: View {
                 SessionActionButton(text: "Change Goal",
                                     symbol: SFSymbols.downUpArrows,
                                     action: $showSetGoalView)
-                .sheet(isPresented: $showSetGoalView, content: {
-                    SetGoalView()
-                })
+                .sheet(isPresented: $showSetGoalView) { SetGoalView()}
                     
                 SessionActionButton(text: "Weekly Summary",
                                     symbol: SFSymbols.weeklyCalendar,
                                     action: $showWeeklySummary)
+                .sheet(isPresented: $showWeeklySummary) { RingView()}
             }
         }
     }
@@ -53,7 +52,6 @@ struct SessionView: View {
 struct SessionView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            SessionView()
             SessionView()
         }
     }

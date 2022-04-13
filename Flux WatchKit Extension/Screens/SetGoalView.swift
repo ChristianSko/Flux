@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct SetGoalView: View {
     
-    @State var goalTime: Double = 990
+    @State var goalTime: Double = 0
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @Environment(\.managedObjectContext) var context
     
     var body: some View {
         VStack(spacing: 20){
@@ -46,7 +48,7 @@ struct SetGoalView: View {
             }
             
             Button(action: {
-                addMinutes()
+                saveGoalTime()
                 dismissScreen()
             }, label:  {
                 ButtonTextStyle(title: "Update")
@@ -74,8 +76,9 @@ struct SetGoalView: View {
     }
     
     func saveGoalTime() {
-        // TO DO: Replace with CoreData
-        UserDefaults.standard.set(self.goalTime, forKey: UserdefaultKeys.goal)
+        let fxTime = FxTime(context: context)
+        fxTime.dailyGoal = goalTime
+        PersistenceController.shared.save()
     }
 }
 
