@@ -25,11 +25,12 @@ struct RingView: View {
                 .font(.system(.body,design: .rounded))
                 .fontWeight(.light)
             
-            fxlabel(text: "Focus",
+            fxlabel(text: "Focused Today",
                     fontweight: .bold,
                     type: .body)
     
-            Text("\(data.last?.dailyGoal ?? 0)")
+            Text("0 of \(Int(data.last?.dailyGoal ?? 0)) Min")
+                .fontWeight(.light)
         }
     }
 }

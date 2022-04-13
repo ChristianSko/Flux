@@ -12,6 +12,13 @@ struct SetGoalView: View {
     
     @State var goalTime: Double = 0
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @FetchRequest(
+        entity: FxTime.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \FxTime.dateAdded, ascending: true)
+        ]
+    ) var data: FetchedResults<FxTime>
+
     @Environment(\.managedObjectContext) var context
     
     var body: some View {
@@ -28,13 +35,19 @@ struct SetGoalView: View {
                         ChangGoalTimeButton(imageName: SFSymbols.minus)
                     })
 
-                    Text("\(Int(goalTime))")
+                    Text("\(Int(data.last?.dailyGoal ?? 0))")
                         .font(.system(size: 45, design: .rounded))
                         .fontWeight(.bold)
                         .lineLimit(1)
                         .frame(width: 85)
                         .focusable(true)
-                        .digitalCrownRotation($goalTime)
+                        .digitalCrownRotation($goalTime,
+                                              from: 0,
+                                              through: 990,
+                                              by: 5,
+                                              sensitivity: .low,
+                                              isContinuous: true,
+                                              isHapticFeedbackEnabled: true)
                     
                     Button(action: { addMinutes() }, label:  {
                         ChangGoalTimeButton(imageName: SFSymbols.plus)
@@ -60,14 +73,14 @@ struct SetGoalView: View {
     
     
     func addMinutes() {
-        if self.goalTime < 990 {
-            self.goalTime += 5
+        if self.data.last?.dailyGoal ?? 0 < 990 {
+            self.data.last?.dailyGoal += 5
         }
     }
     
     func substractMinutes() {
-        if self.goalTime > 0 {
-            self.goalTime -= 5
+        if self.data.last?.dailyGoal ?? 0 > 0 {
+            self.data.last?.dailyGoal -= 5
          }
     }
     
@@ -76,9 +89,15 @@ struct SetGoalView: View {
     }
     
     func saveGoalTime() {
-        let fxTime = FxTime(context: context)
-        fxTime.dailyGoal = goalTime
-        fxTime.dateAdded = Date()
+        
+        
+// TO DO:  Review if you save is correct
+        
+//        let fxTime = FxTime(context: context)
+//        fxTime.dailyGoal = goalTi
+//        fxTime.dateAdded = Date()
+        
+        
         PersistenceController.shared.save()
     }
 }
