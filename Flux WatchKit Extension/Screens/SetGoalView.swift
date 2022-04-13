@@ -78,6 +78,7 @@ struct SetGoalView: View {
     func saveGoalTime() {
         let fxTime = FxTime(context: context)
         fxTime.dailyGoal = goalTime
+        fxTime.dateAdded = Date()
         PersistenceController.shared.save()
     }
 }

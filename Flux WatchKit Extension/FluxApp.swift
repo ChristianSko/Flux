@@ -10,22 +10,19 @@ import SwiftUI
 @main
 struct FluxApp: App {
     
-    
-    @State private var currentTab = 0
     @Environment(\.scenePhase) var scenePhase
+    
     let persistenceController = PersistenceController.shared
     
     @SceneBuilder var body: some Scene {
         
         WindowGroup {
-            
             NavigationView {
-                
                 TabView{
                     SessionView()
-                        .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     RingView()
                 }
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
         }
         .onChange(of: scenePhase) { _ in
