@@ -4,8 +4,9 @@
         <attribute name="dailyGoal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="dateAdded" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="focusedToday" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="totalFocused" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="FxTime" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="FxTime" positionX="-63" positionY="-18" width="128" height="89"/>
     </elements>
 </model>

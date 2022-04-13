@@ -21,7 +21,7 @@ struct RingView: View {
     var body: some View {
         VStack{
             //            Text("\(achievedTime/objectiveTime)%")
-            Text("\(0)%")
+            Text("\(data.last?.focusedToday ?? 0 / (data.last?.dailyGoal ?? 0), specifier: "%.2f") %")
                 .font(.system(.body,design: .rounded))
                 .fontWeight(.light)
             
