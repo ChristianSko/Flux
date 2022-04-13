@@ -43,7 +43,6 @@ struct SessionView: View {
                 SessionActionButton(text: "Weekly Summary",
                                     symbol: SFSymbols.weeklyCalendar,
                                     action: $showWeeklySummary)
-                .sheet(isPresented: $showWeeklySummary) { RingView()}
             }
         }
     }
