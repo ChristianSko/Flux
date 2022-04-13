@@ -34,6 +34,7 @@ struct SessionView: View {
                 SessionPersonalizeButton(text: "Personalize",
                                          symbol: SFSymbols.hourglass,
                                          action: $showPersonalizeTimer)
+                .sheet(isPresented: $showPersonalizeTimer) { PersonalizeSessionView()}
                 
                 SessionActionButton(text: "Change Goal",
                                     symbol: SFSymbols.downUpArrows,

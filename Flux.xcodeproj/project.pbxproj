@@ -30,6 +30,10 @@
 		D64C14D5280394A100137502 /* SessionPersonalizeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C14D4280394A100137502 /* SessionPersonalizeButton.swift */; };
 		D64C14D72804EDFE00137502 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C14D62804EDFE00137502 /* RingView.swift */; };
 		D64C14DA2804FBFE00137502 /* PersistenceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C14D92804FBFE00137502 /* PersistenceContainer.swift */; };
+		D64C14DD2807817000137502 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C14DC2807817000137502 /* TimerManager.swift */; };
+		D64C14DF280781DD00137502 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C14DE280781DD00137502 /* TimerView.swift */; };
+		D64C14E22807845F00137502 /* FxPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C14E12807845F00137502 /* FxPicker.swift */; };
+		D64C14E42807852200137502 /* PersonalizeSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C14E32807852200137502 /* PersonalizeSessionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +105,10 @@
 		D64C14D4280394A100137502 /* SessionPersonalizeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionPersonalizeButton.swift; sourceTree = "<group>"; };
 		D64C14D62804EDFE00137502 /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		D64C14D92804FBFE00137502 /* PersistenceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceContainer.swift; sourceTree = "<group>"; };
+		D64C14DC2807817000137502 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		D64C14DE280781DD00137502 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		D64C14E12807845F00137502 /* FxPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FxPicker.swift; sourceTree = "<group>"; };
+		D64C14E32807852200137502 /* PersonalizeSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizeSessionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +158,7 @@
 				D64C1498280310C100137502 /* FluxApp.swift */,
 				D64C14D82804F7F000137502 /* Shared */,
 				D64C14C728031A2F00137502 /* Screens */,
+				D64C14DB2807815300137502 /* Manager */,
 				D64C14C628031A0700137502 /* Utilities */,
 				D64C14C4280319EA00137502 /* Components */,
 				D64C149C280310C100137502 /* NotificationController.swift */,
@@ -183,6 +192,7 @@
 		D64C14C4280319EA00137502 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D64C14E02807844600137502 /* Picker */,
 				D64C14CB280344D300137502 /* Labels */,
 				D64C14C5280319F700137502 /* Buttons */,
 			);
@@ -215,6 +225,8 @@
 				D64C14BE2803164500137502 /* SetGoalView.swift */,
 				D64C14D02803477200137502 /* SessionView.swift */,
 				D64C14D62804EDFE00137502 /* RingView.swift */,
+				D64C14DE280781DD00137502 /* TimerView.swift */,
+				D64C14E32807852200137502 /* PersonalizeSessionView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -242,6 +254,22 @@
 				D64C14D92804FBFE00137502 /* PersistenceContainer.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		D64C14DB2807815300137502 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				D64C14DC2807817000137502 /* TimerManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		D64C14E02807844600137502 /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				D64C14E12807845F00137502 /* FxPicker.swift */,
+			);
+			path = Picker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D64C14DF280781DD00137502 /* TimerView.swift in Sources */,
 				D64C14D72804EDFE00137502 /* RingView.swift in Sources */,
 				D64C149D280310C100137502 /* NotificationController.swift in Sources */,
 				D64C14BD2803117300137502 /* Data.xcdatamodeld in Sources */,
@@ -381,12 +410,15 @@
 				D64C14A1280310C100137502 /* ComplicationController.swift in Sources */,
 				D64C14CF280346D800137502 /* SessionActionButton.swift in Sources */,
 				D64C14D12803477200137502 /* SessionView.swift in Sources */,
+				D64C14E22807845F00137502 /* FxPicker.swift in Sources */,
 				D64C1499280310C100137502 /* FluxApp.swift in Sources */,
 				D64C149F280310C100137502 /* NotificationView.swift in Sources */,
+				D64C14E42807852200137502 /* PersonalizeSessionView.swift in Sources */,
 				D64C14D5280394A100137502 /* SessionPersonalizeButton.swift in Sources */,
 				D64C14DA2804FBFE00137502 /* PersistenceContainer.swift in Sources */,
 				D64C14C3280316CA00137502 /* Constants.swift in Sources */,
 				D64C14BF2803164500137502 /* SetGoalView.swift in Sources */,
+				D64C14DD2807817000137502 /* TimerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
