@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D6143E1C280C351A008D2BF9 /* WeeklySummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6143E1B280C351A008D2BF9 /* WeeklySummaryView.swift */; };
 		D64C1489280310BF00137502 /* Flux WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D64C1488280310BF00137502 /* Flux WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D64C148E280310C100137502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D64C148D280310C100137502 /* Assets.xcassets */; };
 		D64C1494280310C100137502 /* Flux WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D64C1493280310C100137502 /* Flux WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -79,6 +80,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D6143E1B280C351A008D2BF9 /* WeeklySummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklySummaryView.swift; sourceTree = "<group>"; };
 		D64C1484280310BE00137502 /* Flux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64C1488280310BF00137502 /* Flux WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flux WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64C148D280310C100137502 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				D64C1498280310C100137502 /* FluxApp.swift */,
+				D6143E1B280C351A008D2BF9 /* WeeklySummaryView.swift */,
 				D64C14D82804F7F000137502 /* Shared */,
 				D64C14C728031A2F00137502 /* Screens */,
 				D64C14DB2807815300137502 /* Manager */,
@@ -400,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D64C14DF280781DD00137502 /* TimerView.swift in Sources */,
+				D6143E1C280C351A008D2BF9 /* WeeklySummaryView.swift in Sources */,
 				D64C14D72804EDFE00137502 /* RingView.swift in Sources */,
 				D64C149D280310C100137502 /* NotificationController.swift in Sources */,
 				D64C14BD2803117300137502 /* Data.xcdatamodeld in Sources */,
