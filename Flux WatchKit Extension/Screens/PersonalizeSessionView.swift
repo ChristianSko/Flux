@@ -15,6 +15,7 @@ struct PersonalizeSessionView: View {
     
     let cycleInt: [Int] = Array(1...12)
     let minsInt: [Int] = Array(1...60)
+    let seconds = 60
     
     var body: some View {
         VStack {
@@ -32,7 +33,9 @@ struct PersonalizeSessionView: View {
             .buttonStyle(.borderedProminent)
             .tint(.blue)
             .sheet(isPresented: $startTimerView, content: {
-                TimerView(totalCyles: selectedCycle, session: selectedMinutesAmount * 60, completedSessionTime: selectedMinutesAmount)
+                TimerView(totalCyles: selectedCycle,
+                          session: selectedMinutesAmount * seconds,
+                          sucessFullSessionTime: selectedMinutesAmount)
             })
         }
     }
@@ -41,6 +44,8 @@ struct PersonalizeSessionView: View {
 
 struct PickerView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonalizeSessionView()
+        PersonalizeSessionView(startTimerView: false,
+                               selectedCycle: 1,
+                               selectedMinutesAmount: 1)
     }
 }
