@@ -14,7 +14,8 @@ struct SessionView: View {
     @State var showPersonalizeTimer = false
     
     var sessionsCycles = [1,2,4]
-    let sessionTypes = [25, 45]
+    let sessionLengthMinutes = [25, 45]
+    let seconds = 60
     
     var body: some View {
         ScrollView{
@@ -24,7 +25,7 @@ struct SessionView: View {
                         VStack{
                             ForEach(0..<3) { number in
                               SessionButton(sessionCycles: sessionsCycles[number],
-                                            sessionTime: sessionTypes[sessions],
+                                            sessionTime: sessionLengthMinutes[sessions],
                                             timeType: "Min")
                             }
                         }

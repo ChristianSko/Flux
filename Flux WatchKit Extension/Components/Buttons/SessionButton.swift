@@ -14,33 +14,38 @@ struct SessionButton: View {
     
     
     var body: some View {
-        VStack {
-            Group{
-                Text("\(sessionCycles)x")
-                    .fontWeight(.light)
-                    .font(.footnote)
-                    .padding(.bottom, -7.0)
-                
-                Text("\(sessionTime)")
-                    .font(.system(size: 28, design: .rounded))
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color.brandPrimary)
-                    .frame(width: 85, height: 30, alignment: .center)
-                
-                
-                Text(timeType)
-                    .fontWeight(.light)
-                    .foregroundColor(Color.white)
-                    .padding(.top, -13.0)
+        NavigationLink {
+            TimerView(totalCyles: sessionCycles,
+                      session: sessionTime,
+                      sucessFullSessionTime: sessionTime * 60)
+        } label: {
+            VStack {
+                Group{
+                    Text("\(sessionCycles)x")
+                        .fontWeight(.light)
+                        .font(.footnote)
+                        .padding(.bottom, -7.0)
+                    
+                    Text("\(sessionTime)")
+                        .font(.system(size: 28, design: .rounded))
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color.brandPrimary)
+                        .frame(width: 85, height: 30, alignment: .center)
+                    
+                    
+                    Text(timeType)
+                        .fontWeight(.light)
+                        .foregroundColor(Color.white)
+                        .padding(.top, -13.0)
+                }
             }
+            .background(Color.black)
+            .frame(width: 68, height: 68, alignment: .center)
+            .cornerRadius(50)
+            .overlay(Circle()
+            .strokeBorder(style: StrokeStyle(lineWidth: 4,dash: [2])))
+            .padding()
         }
-    
-        .background(Color.black)
-        .frame(width: 68, height: 68, alignment: .center)
-        .cornerRadius(50)
-        .overlay(Circle()
-        .strokeBorder(style: StrokeStyle(lineWidth: 4,dash: [2])))
-        .padding()
     }
 }
 

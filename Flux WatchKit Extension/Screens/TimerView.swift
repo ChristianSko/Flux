@@ -15,19 +15,18 @@ struct TimerView: View {
     @State var currentCycle = 1
     @State var totalCyles: Int
     @State var session: Int
-    @State var completedSessionTime: Int
+    @State var sucessFullSessionTime: Int
     
     @StateObject var timerViewModel = TimerManager()
     @State private var notificationDate: Date = Date()
     
-    
-    @AppStorage(UserdefaultKeys.focused) private var focusedTime = UserDefaults.standard.double(forKey: UserdefaultKeys.focused)
-    
     var body: some View {
         VStack{
             Spacer()
-            
-            Text("Session \(currentCycle) out of \(totalCyles)")
+        
+            fxlabel(text: "Session \(currentCycle) out of \(totalCyles)",
+                    fontweight: .regular,
+                    type: .body)
             
             
             Text("\(timeToString2(time: TimeInterval(timerViewModel.secondsElapsed)))")
@@ -45,8 +44,8 @@ struct TimerView: View {
             }) {
                 ButtonTextStyle(title: "Stop")
             }
-            .background(Color.brandPrimary)
-            .cornerRadius(30)
+            .buttonStyle(.borderedProminent)
+            .tint(.blue)
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitle("Timer")
@@ -59,7 +58,8 @@ struct TimerView: View {
             NotifyWhenFinished(timeInterval: session)
             if self.session == 0 {
                 print("Timer reached 0, Add time to ring")
-                self.focusedTime += Double(self.completedSessionTime)
+                //Replace with add to Core Data
+//                self.focusedTime += Double(self.completedSessionTime)
                 self.mode.wrappedValue.dismiss()
             }
         }
@@ -138,6 +138,6 @@ func timeToString2(time: TimeInterval) -> String {
 
 struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
-        TimerView(totalCyles: 1, session: 20, completedSessionTime: 25)
+        TimerView(totalCyles: 1, session: 20, sucessFullSessionTime: 25)
     }
 }
