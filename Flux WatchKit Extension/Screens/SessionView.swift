@@ -19,42 +19,46 @@ struct SessionView: View {
     let seconds = 60
     
     var body: some View {
-        ScrollView{
-            VStack {
-                HStack{
-                    ForEach(0..<2) {sessions in
-                        VStack{
-                            ForEach(0..<3) { number in
-                                SessionButton(sessionCycles: sessionsCycles[number],
-                                              sessionTime: sessionLengthMinutes[sessions],
-                                              timeType: "Min",
-                                              action: $showDefaultTimer)
-                                .sheet(isPresented: $showDefaultTimer) {
-                                    TimerView(totalCyles: sessionsCycles[number],
-                                              session: sessionLengthMinutes[sessions] * seconds,
-                                              sucessFullSessionTime: sessionLengthMinutes[sessions])
+        NavigationView{
+            ScrollView{
+                VStack {
+                    HStack{
+                        ForEach(0..<2) {sessions in
+                            VStack{
+                                ForEach(0..<3) { number in
+                                    NavigationLink {
+                                        TimerView(totalCyles: sessionsCycles[number],
+                                                  session: sessionLengthMinutes[sessions],
+                                                  sucessFullSessionTime: sessionLengthMinutes[sessions] * seconds)
+                                    } label: {
+                                        SessionButton(sessionCycles: sessionsCycles[number],
+                                                      sessionTime: sessionLengthMinutes[sessions],
+                                                      timeType: "Min")
+                                    }
+                                    .buttonStyle(.plain)
                                 }
                             }
                         }
                     }
-                }
-                
-                SessionPersonalizeButton(text: "Personalize",
-                                         symbol: SFSymbols.hourglass,
-                                         action: $showPersonalizeTimer)
-                .sheet(isPresented: $showPersonalizeTimer) { PersonalizeSessionView()}
-                
-                SessionActionButton(text: "Change Goal",
-                                    symbol: SFSymbols.downUpArrows,
-                                    action: $showSetGoalView)
-                .sheet(isPresented: $showSetGoalView) { SetGoalView()}
                     
-                SessionActionButton(text: "Weekly Summary",
-                                    symbol: SFSymbols.weeklyCalendar,
-                                    action: $showWeeklySummary)
-                .sheet(isPresented: $showWeeklySummary) { WeeklySummaryView()}
+                    SessionPersonalizeButton(text: "Personalize",
+                                             symbol: SFSymbols.hourglass,
+                                             action: $showPersonalizeTimer)
+                    .sheet(isPresented: $showPersonalizeTimer) { PersonalizeSessionView()}
+                    
+                    SessionActionButton(text: "Change Goal",
+                                        symbol: SFSymbols.downUpArrows,
+                                        action: $showSetGoalView)
+                    .sheet(isPresented: $showSetGoalView) { SetGoalView()}
+                        
+                    SessionActionButton(text: "Weekly Summary",
+                                        symbol: SFSymbols.weeklyCalendar,
+                                        action: $showWeeklySummary)
+                    .sheet(isPresented: $showWeeklySummary) { WeeklySummaryView()}
+                }
             }
         }
+        
     }
 }
 
