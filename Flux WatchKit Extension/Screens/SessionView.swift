@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SessionView: View {
     
+    @State var showDefaultTimer = false
     @State var showSetGoalView = false
     @State var showWeeklySummary = false
     @State var showPersonalizeTimer = false
@@ -24,9 +25,15 @@ struct SessionView: View {
                     ForEach(0..<2) {sessions in
                         VStack{
                             ForEach(0..<3) { number in
-                              SessionButton(sessionCycles: sessionsCycles[number],
-                                            sessionTime: sessionLengthMinutes[sessions],
-                                            timeType: "Min")
+                                SessionButton(sessionCycles: sessionsCycles[number],
+                                              sessionTime: sessionLengthMinutes[sessions],
+                                              timeType: "Min",
+                                              action: $showDefaultTimer)
+                                .sheet(isPresented: $showDefaultTimer) {
+                                    TimerView(totalCyles: sessionsCycles[number],
+                                              session: sessionLengthMinutes[sessions] * seconds,
+                                              sucessFullSessionTime: sessionLengthMinutes[sessions])
+                                }
                             }
                         }
                     }

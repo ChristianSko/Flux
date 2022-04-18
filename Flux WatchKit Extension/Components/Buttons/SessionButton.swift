@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct SessionButton: View {
+    
     var sessionCycles: Int
     var sessionTime: Int
     var timeType: String
     
+    @Binding var action: Bool
+    
     
     var body: some View {
+        Button {
+            self.action.toggle()
+        } label: {
             VStack {
                 Group{
                     Text("\(sessionCycles)x")
@@ -38,8 +44,10 @@ struct SessionButton: View {
             .frame(width: 68, height: 68, alignment: .center)
             .cornerRadius(50)
             .overlay(Circle()
-            .strokeBorder(style: StrokeStyle(lineWidth: 4,dash: [2])))
+                .strokeBorder(style: StrokeStyle(lineWidth: 4,dash: [2])))
             .padding()
+        }
+        .buttonStyle(.plain)
     }
 }
 
@@ -47,6 +55,7 @@ struct SessionButton_Previews: PreviewProvider {
     static var previews: some View {
         SessionButton(sessionCycles: 1,
                       sessionTime: 25,
-                      timeType: "Min")
+                      timeType: "Min",
+                      action: .constant(false))
     }
 }

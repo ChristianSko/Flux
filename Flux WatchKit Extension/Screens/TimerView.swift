@@ -48,7 +48,6 @@ struct TimerView: View {
             .tint(.blue)
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarTitle("Timer")
         .onAppear(perform: requestPermission)
         .onAppear(perform: {
             timerViewModel.secondsElapsed = session

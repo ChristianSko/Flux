@@ -158,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				D64C1498280310C100137502 /* FluxApp.swift */,
-				D6143E1B280C351A008D2BF9 /* WeeklySummaryView.swift */,
 				D64C14D82804F7F000137502 /* Shared */,
 				D64C14C728031A2F00137502 /* Screens */,
 				D64C14DB2807815300137502 /* Manager */,
@@ -230,6 +229,7 @@
 				D64C14D62804EDFE00137502 /* RingView.swift */,
 				D64C14DE280781DD00137502 /* TimerView.swift */,
 				D64C14E32807852200137502 /* PersonalizeSessionView.swift */,
+				D6143E1B280C351A008D2BF9 /* WeeklySummaryView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
