@@ -14,11 +14,6 @@ struct SessionButton: View {
     
     
     var body: some View {
-        NavigationLink {
-            TimerView(totalCyles: sessionCycles,
-                      session: sessionTime,
-                      sucessFullSessionTime: sessionTime * 60)
-        } label: {
             VStack {
                 Group{
                     Text("\(sessionCycles)x")
@@ -45,7 +40,6 @@ struct SessionButton: View {
             .overlay(Circle()
             .strokeBorder(style: StrokeStyle(lineWidth: 4,dash: [2])))
             .padding()
-        }
     }
 }
 
