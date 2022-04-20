@@ -55,11 +55,7 @@ struct RingShape: Shape {
 }
 
 struct Ring: View {
-    
-    @AppStorage(UserdefaultKeys.focused) var achievedTime: Double = UserDefaults.standard.double(forKey: UserdefaultKeys.focused)
-    @AppStorage(UserdefaultKeys.goal) var objectiveTime = UserDefaults.standard.double(forKey: UserdefaultKeys.goal)
-
-    
+        
     private static let ShadowColor: Color = Color.black.opacity(0.2)
     private static let ShadowRadius: CGFloat = 5
     private static let ShadowOffsetMultiplier: CGFloat = ShadowRadius + 2
@@ -129,7 +125,7 @@ struct Ring: View {
                 }
             }
         }
-        .navigationBarTitle("Daily")
+        .navigationBarTitle("Progress")
         // Padding to ensure that the entire ring fits within the view size allocated
         .padding(self.ringWidth / 2)
     }

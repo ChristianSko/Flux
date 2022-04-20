@@ -17,15 +17,30 @@ struct RingView: View {
         ]
     ) var data: FetchedResults<FxTime>
 
+    var sumFocusedToday: Double {
+        data.reduce(0){ $0 + $1.focusedToday }
+    }
+    
+    var percentage: Double {
+        let finalvalue = sumFocusedToday / (data.last?.dailyGoal ?? 0)
+        
+        if finalvalue != .infinity {
+            return finalvalue * 100
+        } else {
+            return 0
+        }
+    }
     
     var body: some View {
         ZStack {
-            Ring(ringWidth: 15,
-                 percent: (data.last?.focusedToday ?? 0 / (data.last?.dailyGoal ?? 0) ),
+            Ring(ringWidth: 10,
+                 percent: percentage ,
                  backgroundColor: Color.brandPrimary,
                  foregroundColors: [.white, Color.brandPrimary])
             
-            RingInfoView(focusedToday: data.last?.focusedToday ?? 0,
+
+            
+            RingInfoView(focusedToday: sumFocusedToday,
                          dailyGoal: data.last?.dailyGoal ?? 0)
         }
     }

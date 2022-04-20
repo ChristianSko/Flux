@@ -64,10 +64,10 @@ struct TimerView: View {
         })
         .onAppear(){
             NotifyWhenFinished(timeInterval: session)
-            if TimerManager.shared.$secondsElapsed == session {
+            if true {
                 print("Timer reached 0, Add time to ring")
                 let fxTime = FxTime(context: context)
-                fxTime.focusedToday += Double(sucessFullSessionTime)
+                fxTime.focusedToday = Double(sucessFullSessionTime)
                 fxTime.dateAdded = Date()
                 PersistenceController.shared.save()
                 self.mode.wrappedValue.dismiss()

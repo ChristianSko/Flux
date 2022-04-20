@@ -26,7 +26,7 @@ struct FluxApp: App {
             }
         }
         .onChange(of: scenePhase) { _ in
-            persistenceController.save()
+//            persistenceController.save()
         }
         
         WKNotificationScene(controller: NotificationController.self, category: "myCategory")
