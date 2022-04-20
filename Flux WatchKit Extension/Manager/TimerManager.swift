@@ -8,6 +8,9 @@
 import Foundation
 
 class TimerManager: ObservableObject {
+    
+    static let shared = TimerManager()
+    
     @Published var secondsElapsed: Int = 0
     var timer: Timer = Timer()
     

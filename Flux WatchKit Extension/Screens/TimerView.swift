@@ -7,17 +7,26 @@
 
 import SwiftUI
 import UserNotifications
+import CoreData
 
 struct TimerView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    
+    @FetchRequest(
+        entity: FxTime.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \FxTime.dateAdded, ascending: true)
+        ]
+    ) var data: FetchedResults<FxTime>
+
+    @Environment(\.managedObjectContext) var context
+    
     @State var currentCycle = 1
     @State var totalCyles: Int
     @State var session: Int
     @State var sucessFullSessionTime: Int
-    
-    @StateObject var timerViewModel = TimerManager()
     @State private var notificationDate: Date = Date()
     
     var body: some View {
@@ -29,7 +38,7 @@ struct TimerView: View {
                     type: .body)
             
             
-            Text("\(timeToString2(time: TimeInterval(timerViewModel.secondsElapsed)))")
+            Text("\(timeToString2(time: TimeInterval(TimerManager.shared.secondsElapsed)))")
                 .font(Font.monospacedDigit(.system(size: 50))())
                 .fontWeight(.heavy)
                 .foregroundColor(Color.white)
@@ -39,7 +48,7 @@ struct TimerView: View {
             Button(action: {
                 self.session = 0
                 self.mode.wrappedValue.dismiss()
-                timerViewModel.timer.invalidate()
+                TimerManager.shared.timer.invalidate()
                 
             }) {
                 ButtonTextStyle(title: "Stop")
@@ -50,15 +59,17 @@ struct TimerView: View {
         .navigationBarBackButtonHidden(true)
         .onAppear(perform: requestPermission)
         .onAppear(perform: {
-            timerViewModel.secondsElapsed = session
-            timerViewModel.start()
+            TimerManager.shared.secondsElapsed = session
+            TimerManager.shared.start()
         })
         .onAppear(){
             NotifyWhenFinished(timeInterval: session)
-            if self.session == 0 {
+            if TimerManager.shared.$secondsElapsed == session {
                 print("Timer reached 0, Add time to ring")
-                //Replace with add to Core Data
-//                self.focusedTime += Double(self.completedSessionTime)
+                let fxTime = FxTime(context: context)
+                fxTime.focusedToday += Double(sucessFullSessionTime)
+                fxTime.dateAdded = Date()
+                PersistenceController.shared.save()
                 self.mode.wrappedValue.dismiss()
             }
         }
@@ -88,14 +99,14 @@ struct TimerView: View {
     func movingToBackground() {
         print("Moving to the background")
         notificationDate = Date()
-        timerViewModel.pause()
+        TimerManager.shared.pause()
     }
     
     func movingToForeground() {
         print("Moving to the foreground")
         let deltaTime: Int = Int(Date().timeIntervalSince(notificationDate))
-        timerViewModel.secondsElapsed -= deltaTime
-        timerViewModel.start()
+        TimerManager.shared.secondsElapsed -= deltaTime
+        TimerManager.shared.start()
     }
 }
 

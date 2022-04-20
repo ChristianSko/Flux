@@ -29,7 +29,7 @@ struct SessionView: View {
                                     NavigationLink {
                                         TimerView(totalCyles: sessionsCycles[number],
                                                   session: sessionLengthMinutes[sessions],
-                                                  sucessFullSessionTime: sessionLengthMinutes[sessions] * seconds)
+                                                  sucessFullSessionTime: sessionLengthMinutes[sessions])
                                     } label: {
                                         SessionButton(sessionCycles: sessionsCycles[number],
                                                       sessionTime: sessionLengthMinutes[sessions],
