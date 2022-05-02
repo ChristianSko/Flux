@@ -10,7 +10,7 @@ import CoreData
 
 struct SetGoalView: View {
     
-    @State var goalTime: Double = 0
+
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @FetchRequest(
         entity: FxTime.entity(),
@@ -41,13 +41,13 @@ struct SetGoalView: View {
                         .lineLimit(1)
                         .frame(width: 85)
                         .focusable(true)
-                        .digitalCrownRotation($goalTime,
-                                              from: 0,
-                                              through: 990,
-                                              by: 5,
-                                              sensitivity: .low,
-                                              isContinuous: true,
-                                              isHapticFeedbackEnabled: true)
+//                        .digitalCrownRotation(data.last?.dailyGoal,
+//                                              from: 0,
+//                                              through: 990,
+//                                              by: 5,
+//                                              sensitivity: .low,
+//                                              isContinuous: true,
+//                                              isHapticFeedbackEnabled: true)
                     
                     Button(action: { addMinutes() }, label:  {
                         ChangGoalTimeButton(imageName: SFSymbols.plus)

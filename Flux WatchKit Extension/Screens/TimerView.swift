@@ -69,6 +69,7 @@ struct TimerView: View {
                 let fxTime = FxTime(context: context)
                 fxTime.focusedToday = Double(sucessFullSessionTime)
                 fxTime.dateAdded = Date()
+                fxTime.dailyGoal = data.last?.dailyGoal ?? 0
                 PersistenceController.shared.save()
                 self.mode.wrappedValue.dismiss()
             }

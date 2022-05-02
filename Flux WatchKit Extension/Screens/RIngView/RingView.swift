@@ -24,6 +24,9 @@ struct RingView: View {
     var percentage: Double {
         let finalvalue = sumFocusedToday / (data.last?.dailyGoal ?? 0)
         
+        // NOTE: inifinity results cause ring to crash
+        // TO DO: refactor
+        
         if finalvalue != .infinity {
             return finalvalue * 100
         } else {
