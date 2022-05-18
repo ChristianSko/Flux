@@ -99,12 +99,16 @@ class FxTimerViewModel: NSObject, ObservableObject, UNUserNotificationCenterDele
     func addNotification(){
         let content = UNMutableNotificationContent()
         content.title = "Completed Session"
-        content.subtitle = "Congratulations! Completed Session"
+        content.subtitle = "Well done!"
         content.sound = UNNotificationSound.default
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(staticTotalSeconds), repeats: false))
         
         UNUserNotificationCenter.current().add(request)
+    }
+    
+    func secondsToHoursMinutesSeconds(_ seconds: Int) -> (hours: Int, minutes: Int, seconds: Int) {
+        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
     
 }

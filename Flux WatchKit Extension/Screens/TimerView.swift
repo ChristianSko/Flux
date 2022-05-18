@@ -27,6 +27,7 @@ struct TimerView: View {
     @State var totalCyles: Int
     @State var session: Int
     @State var sucessFullSessionTime: Int
+
     
     var body: some View {
         VStack{
@@ -37,6 +38,7 @@ struct TimerView: View {
                     type: .body)
             
             Text(fxTimerViewModel.timerStringValue)
+                .font(.largeTitle)
                 .fontWeight(.heavy)
                 .foregroundColor(Color.white)
 
@@ -53,7 +55,10 @@ struct TimerView: View {
             .tint(.blue)
         }
         .onAppear{
-            fxTimerViewModel.seconds = session
+            let formattedTo = fxTimerViewModel.secondsToHoursMinutesSeconds(session)
+            fxTimerViewModel.hour = formattedTo.hours
+            fxTimerViewModel.minutes = formattedTo.minutes
+            fxTimerViewModel.seconds = formattedTo.seconds
             fxTimerViewModel.startTimer()
         }
         .navigationBarBackButtonHidden(true)
