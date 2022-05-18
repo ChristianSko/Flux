@@ -28,7 +28,7 @@ struct SessionView: View {
                                 ForEach(0..<3) { number in
                                     NavigationLink {
                                         TimerView(totalCyles: sessionsCycles[number],
-                                                  session: sessionLengthMinutes[sessions],
+                                                  session: sessionLengthMinutes[sessions] * 60,
                                                   sucessFullSessionTime: sessionLengthMinutes[sessions])
                                     } label: {
                                         SessionButton(sessionCycles: sessionsCycles[number],
@@ -41,20 +41,24 @@ struct SessionView: View {
                         }
                     }
                     
-                    SessionPersonalizeButton(text: "Personalize",
-                                             symbol: SFSymbols.hourglass,
-                                             action: $showPersonalizeTimer)
-                    .sheet(isPresented: $showPersonalizeTimer) { PersonalizeSessionView()}
-                    
-                    SessionActionButton(text: "Change Goal",
-                                        symbol: SFSymbols.downUpArrows,
-                                        action: $showSetGoalView)
-                    .sheet(isPresented: $showSetGoalView) { SetGoalView()}
+                    VStack{
                         
-                    SessionActionButton(text: "Weekly Summary",
-                                        symbol: SFSymbols.weeklyCalendar,
-                                        action: $showWeeklySummary)
-                    .sheet(isPresented: $showWeeklySummary) { WeeklySummaryView()}
+                        
+                        SessionPersonalizeButton(text: "Personalize",
+                                                 symbol: SFSymbols.hourglass,
+                                                 action: $showPersonalizeTimer)
+                        .sheet(isPresented: $showPersonalizeTimer) { PersonalizeSessionView()}
+                        
+                        SessionActionButton(text: "Change Goal",
+                                            symbol: SFSymbols.downUpArrows,
+                                            action: $showSetGoalView)
+                        .sheet(isPresented: $showSetGoalView) { SetGoalView()}
+                        
+                        SessionActionButton(text:  "Weekly Summary",
+                                            symbol: SFSymbols.weeklyCalendar,
+                                            action: $showWeeklySummary)
+                        .sheet(isPresented: $showWeeklySummary) { WeeklySummaryView()}
+                    }
                 }
             }
         }

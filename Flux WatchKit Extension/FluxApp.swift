@@ -10,7 +10,9 @@ import SwiftUI
 @main
 struct FluxApp: App {
     
-    @Environment(\.scenePhase) var scenePhase
+    @StateObject var pomodoroModel: FxTimerViewModel = .init()
+    @Environment(\.scenePhase) var phase
+    @State var lastActiveTimeStamp: Date = Date()
     
     let persistenceController = PersistenceController.shared
     
@@ -22,10 +24,31 @@ struct FluxApp: App {
                     SessionView()
                     RingView()
                 }
+                .environmentObject(pomodoroModel)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
         }
-        .onChange(of: scenePhase) { _ in
+        .onChange(of: phase) { newValue in
+            if pomodoroModel.isStarted{
+                if newValue == .background{
+                    lastActiveTimeStamp = Date()
+                }
+                
+                if newValue == .active{
+                    // MARK: Finding The Difference
+                    let currentTimeStampDiff = Date().timeIntervalSince(lastActiveTimeStamp)
+                    if pomodoroModel.totalSeconds - Int(currentTimeStampDiff) <= 0{
+                        pomodoroModel.isStarted = false
+                        pomodoroModel.totalSeconds = 0
+                        pomodoroModel.updateTimer()
+                    }else{
+                        pomodoroModel.totalSeconds -= Int(currentTimeStampDiff)
+                    }
+                }
+            }
+        }
+        
+        .onChange(of: phase) { _ in
             persistenceController.save()
         }
         

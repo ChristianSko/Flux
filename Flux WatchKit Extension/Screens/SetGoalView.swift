@@ -22,7 +22,7 @@ struct SetGoalView: View {
     @Environment(\.managedObjectContext) var context
     
     var body: some View {
-        VStack(spacing: 20){
+        VStack(spacing: 12){
             
             fxlabel(text: "DAILY FOCUS GOAL",
                     fontweight: .light,

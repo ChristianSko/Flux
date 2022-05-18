@@ -14,12 +14,17 @@ struct SessionActionButton: View {
     @Binding var action: Bool
     
     var body: some View {
-        Button {
-            self.action.toggle()
-        } label: {
-            Label(text, systemImage: symbol)
+        HStack {
+            Button {
+                self.action.toggle()
+            } label: {
+                Label(text, systemImage: symbol)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.25)
+            }
+            .buttonStyle(.bordered)
+            .padding(.horizontal)
         }
-        .buttonStyle(.bordered)
     }
 }
 
@@ -28,7 +33,7 @@ struct SessionActionButton: View {
 struct SessionActionButton_Previews: PreviewProvider {
     
     static var previews: some View {
-        SessionActionButton(text: "Personalize", symbol: SFSymbols.hourglass, action: .constant(false))
+        SessionActionButton(text: "Weekly Summary", symbol: SFSymbols.hourglass, action: .constant(false))
         
     }
 }

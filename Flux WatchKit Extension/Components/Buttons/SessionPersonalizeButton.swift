@@ -20,6 +20,7 @@ struct SessionPersonalizeButton: View {
         }
         .buttonStyle(.borderedProminent)
         .tint(.brandPrimary)
+        .padding(.horizontal)
     }
 }
 
