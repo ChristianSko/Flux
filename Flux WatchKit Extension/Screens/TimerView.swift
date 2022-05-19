@@ -54,6 +54,8 @@ struct TimerView: View {
             .buttonStyle(.borderedProminent)
             .tint(.blue)
         }
+        .navigationBarHidden(true)
+        .interactiveDismissDisabled()
         .onAppear{
             let formattedTo = fxTimerViewModel.secondsToHoursMinutesSeconds(session)
             fxTimerViewModel.hour = formattedTo.hours

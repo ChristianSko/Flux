@@ -13,6 +13,7 @@ struct SessionView: View {
     @State var showSetGoalView = false
     @State var showWeeklySummary = false
     @State var showPersonalizeTimer = false
+    @State var defaultTimer = false
     
     var sessionsCycles = [1,2,4]
     let sessionLengthMinutes = [25, 45]
@@ -26,16 +27,19 @@ struct SessionView: View {
                         ForEach(0..<2) {sessions in
                             VStack{
                                 ForEach(0..<3) { number in
-                                    NavigationLink {
-                                        TimerView(totalCyles: sessionsCycles[number],
-                                                  session: sessionLengthMinutes[sessions] * 60,
-                                                  sucessFullSessionTime: sessionLengthMinutes[sessions])
+                                    Button {
+                                     self.defaultTimer.toggle()
                                     } label: {
                                         SessionButton(sessionCycles: sessionsCycles[number],
                                                       sessionTime: sessionLengthMinutes[sessions],
                                                       timeType: "Min")
                                     }
                                     .buttonStyle(.plain)
+                                    .sheet(isPresented: $defaultTimer) {
+                                        TimerView(totalCyles: sessionsCycles[number],
+                                                  session: sessionLengthMinutes[sessions] * 60,
+                                                  sucessFullSessionTime: sessionLengthMinutes[sessions])
+                                    }
                                 }
                             }
                         }

@@ -19,14 +19,12 @@ struct FluxApp: App {
     @SceneBuilder var body: some Scene {
         
         WindowGroup {
-            NavigationView {
                 TabView{
                     SessionView()
                     RingView()
                 }
                 .environmentObject(pomodoroModel)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            }
         }
         .onChange(of: phase) { newValue in
             if pomodoroModel.isStarted{
