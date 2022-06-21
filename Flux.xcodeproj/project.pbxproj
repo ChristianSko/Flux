@@ -35,6 +35,7 @@
 		D64C14E22807845F00137502 /* FxPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C14E12807845F00137502 /* FxPicker.swift */; };
 		D64C14E42807852200137502 /* PersonalizeSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C14E32807852200137502 /* PersonalizeSessionView.swift */; };
 		D66F440A2835623C00227542 /* FxTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66F44092835623C00227542 /* FxTimerViewModel.swift */; };
+		D698B26E2862267C00401A68 /* SetGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D698B26D2862267C00401A68 /* SetGoalViewModel.swift */; };
 		D69BC0E1280E0332007E7374 /* Ring.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69BC0E0280E0332007E7374 /* Ring.swift */; };
 		D69BC0E4280E0713007E7374 /* RingInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69BC0E3280E0713007E7374 /* RingInfoView.swift */; };
 /* End PBXBuildFile section */
@@ -113,6 +114,7 @@
 		D64C14E12807845F00137502 /* FxPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FxPicker.swift; sourceTree = "<group>"; };
 		D64C14E32807852200137502 /* PersonalizeSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizeSessionView.swift; sourceTree = "<group>"; };
 		D66F44092835623C00227542 /* FxTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FxTimerViewModel.swift; sourceTree = "<group>"; };
+		D698B26D2862267C00401A68 /* SetGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalViewModel.swift; sourceTree = "<group>"; };
 		D69BC0E0280E0332007E7374 /* Ring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ring.swift; sourceTree = "<group>"; };
 		D69BC0E3280E0713007E7374 /* RingInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				D64C14BE2803164500137502 /* SetGoalView.swift */,
+				D698B26D2862267C00401A68 /* SetGoalViewModel.swift */,
 				D64C14D02803477200137502 /* SessionView.swift */,
 				D64C14D62804EDFE00137502 /* RingView.swift */,
 				D64C14DE280781DD00137502 /* TimerView.swift */,
@@ -436,6 +439,7 @@
 				D64C14C928031A8000137502 /* ChangGoalTimeButton.swift in Sources */,
 				D69BC0E1280E0332007E7374 /* Ring.swift in Sources */,
 				D64C14A1280310C100137502 /* ComplicationController.swift in Sources */,
+				D698B26E2862267C00401A68 /* SetGoalViewModel.swift in Sources */,
 				D64C14CF280346D800137502 /* SessionActionButton.swift in Sources */,
 				D64C14D12803477200137502 /* SessionView.swift in Sources */,
 				D64C14E22807845F00137502 /* FxPicker.swift in Sources */,

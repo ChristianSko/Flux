@@ -20,6 +20,7 @@ struct SetGoalView: View {
     ) var data: FetchedResults<FxTime>
 
     @Environment(\.managedObjectContext) var context
+    @State var currenMinutes: Double = 0
     
     var body: some View {
         VStack(spacing: 12){
@@ -35,19 +36,19 @@ struct SetGoalView: View {
                         ChangGoalTimeButton(imageName: SFSymbols.minus)
                     })
 
-                    Text("\(Int(data.last?.dailyGoal ?? 0))")
+                    Text("\(Int(currenMinutes))")
                         .font(.system(size: 45, design: .rounded))
                         .fontWeight(.bold)
                         .lineLimit(1)
                         .frame(width: 85)
                         .focusable(true)
-//                        .digitalCrownRotation(data.last?.dailyGoal,
-//                                              from: 0,
-//                                              through: 990,
-//                                              by: 5,
-//                                              sensitivity: .low,
-//                                              isContinuous: true,
-//                                              isHapticFeedbackEnabled: true)
+                        .digitalCrownRotation($currenMinutes,
+                                              from: 0,
+                                              through: 990,
+                                              by: 5,
+                                              sensitivity: .low,
+                                              isContinuous: true,
+                                              isHapticFeedbackEnabled: true)
                     
                     Button(action: { addMinutes() }, label:  {
                         ChangGoalTimeButton(imageName: SFSymbols.plus)
@@ -69,18 +70,23 @@ struct SetGoalView: View {
             .buttonStyle(.borderedProminent)
             .tint(.blue)
         }
+        .onAppear{
+            currenMinutes = self.data.last?.dailyGoal ?? 0
+        }
     }
     
     
     func addMinutes() {
         if self.data.last?.dailyGoal ?? 0 < 990 {
-            self.data.last?.dailyGoal += 5
+            currenMinutes += 5
+//            self.data.last?.dailyGoal += 5
         }
     }
     
     func substractMinutes() {
         if self.data.last?.dailyGoal ?? 0 > 0 {
-            self.data.last?.dailyGoal -= 5
+//            self.data.last?.dailyGoal -= 5
+            currenMinutes -= 5
          }
     }
     
@@ -93,17 +99,17 @@ struct SetGoalView: View {
         
 // TO DO:  Review if you save is correct
         
-//        let fxTime = FxTime(context: context)
-//        fxTime.dailyGoal = goalTi
-//        fxTime.dateAdded = Date()
+        let fxTime = FxTime(context: context)
+        fxTime.dailyGoal = currenMinutes
+        fxTime.dateAdded = Date()
         
         
         PersistenceController.shared.save()
     }
 }
 
-struct SetGoalView_Previews: PreviewProvider {
-    static var previews: some View {
-        SetGoalView()
-    }
-}
+//struct SetGoalView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SetGoalView()
+//    }
+//}
