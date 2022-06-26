@@ -30,16 +30,11 @@ struct SessionView: View {
                                     Button {
                                      self.defaultTimer.toggle()
                                     } label: {
-                                        SessionButton(sessionCycles: sessionsCycles[number],
+                                         SessionButton(sessionCycles: sessionsCycles[number],
                                                       sessionTime: sessionLengthMinutes[sessions],
-                                                      timeType: "Min")
+                                                      timeType: fxText.sessionMinutes)
                                     }
                                     .buttonStyle(.plain)
-                                    .sheet(isPresented: $defaultTimer) {
-                                        TimerView(totalCyles: sessionsCycles[number],
-                                                  session: sessionLengthMinutes[sessions] * 60,
-                                                  sucessFullSessionTime: sessionLengthMinutes[sessions])
-                                    }
                                 }
                             }
                         }
@@ -48,17 +43,17 @@ struct SessionView: View {
                     VStack{
                         
                         
-                        SessionPersonalizeButton(text: "Personalize",
+                        SessionPersonalizeButton(text: fxText.personalizeButton,
                                                  symbol: SFSymbols.hourglass,
                                                  action: $showPersonalizeTimer)
                         .sheet(isPresented: $showPersonalizeTimer) { PersonalizeSessionView()}
                         
-                        SessionActionButton(text: "Change Goal",
+                        SessionActionButton(text: fxText.changeGoalButton,
                                             symbol: SFSymbols.downUpArrows,
                                             action: $showSetGoalView)
                         .sheet(isPresented: $showSetGoalView) { SetGoalView()}
                         
-                        SessionActionButton(text:  "Weekly Summary",
+                        SessionActionButton(text:  fxText.weeklySummaryButton,
                                             symbol: SFSymbols.weeklyCalendar,
                                             action: $showWeeklySummary)
                         .sheet(isPresented: $showWeeklySummary) { WeeklySummaryView()}

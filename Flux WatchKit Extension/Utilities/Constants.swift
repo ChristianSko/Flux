@@ -25,3 +25,11 @@ enum SFSymbols {
     static let hourglass        = "timer"
 }
 
+
+enum fxText{
+    static let personalizeButton = "Personalize"
+    static let changeGoalButton = "Change Goal"
+    static let weeklySummaryButton = "Weekly Summary"
+    static let sessionMinutes = "Min"
+    
+}
