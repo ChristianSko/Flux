@@ -38,6 +38,7 @@
 		D698B26E2862267C00401A68 /* SetGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D698B26D2862267C00401A68 /* SetGoalViewModel.swift */; };
 		D69BC0E1280E0332007E7374 /* Ring.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69BC0E0280E0332007E7374 /* Ring.swift */; };
 		D69BC0E4280E0713007E7374 /* RingInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69BC0E3280E0713007E7374 /* RingInfoView.swift */; };
+		D6A4B2D3286836F80097A6E2 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A4B2D2286836F80097A6E2 /* CoreDataViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		D698B26D2862267C00401A68 /* SetGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalViewModel.swift; sourceTree = "<group>"; };
 		D69BC0E0280E0332007E7374 /* Ring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ring.swift; sourceTree = "<group>"; };
 		D69BC0E3280E0713007E7374 /* RingInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingInfoView.swift; sourceTree = "<group>"; };
+		D6A4B2D2286836F80097A6E2 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 			children = (
 				D64C14BB2803117300137502 /* Data.xcdatamodeld */,
 				D64C14D92804FBFE00137502 /* PersistenceContainer.swift */,
+				D6A4B2D2286836F80097A6E2 /* CoreDataViewModel.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				D698B26E2862267C00401A68 /* SetGoalViewModel.swift in Sources */,
 				D64C14CF280346D800137502 /* SessionActionButton.swift in Sources */,
 				D64C14D12803477200137502 /* SessionView.swift in Sources */,
+				D6A4B2D3286836F80097A6E2 /* CoreDataViewModel.swift in Sources */,
 				D64C14E22807845F00137502 /* FxPicker.swift in Sources */,
 				D64C1499280310C100137502 /* FluxApp.swift in Sources */,
 				D64C149F280310C100137502 /* NotificationView.swift in Sources */,
