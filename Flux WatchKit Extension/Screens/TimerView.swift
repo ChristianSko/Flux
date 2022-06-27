@@ -68,6 +68,10 @@ struct TimerView: View {
             if fxTimerViewModel.isStarted{
                 fxTimerViewModel.updateTimer()
             }
+            
+            if fxTimerViewModel.isFinished {
+                self.mode.wrappedValue.dismiss()
+            }
         }
         .onAppear(perform: fxTimerViewModel.authorizeNotification)
     }

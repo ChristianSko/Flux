@@ -28,7 +28,7 @@ struct FluxApp: App {
         }
         .onChange(of: phase) { newValue in
             if pomodoroModel.isStarted{
-                if newValue == .background{
+                if newValue == .background || newValue == .inactive{
                     lastActiveTimeStamp = Date()
                 }
                 
