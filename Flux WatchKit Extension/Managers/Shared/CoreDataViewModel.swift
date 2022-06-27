@@ -14,7 +14,7 @@ class CoreDataViewModel: ObservableObject {
     @Published var fxTime: [FxTime] = []
 
     init() {
-        container = NSPersistentContainer(name: "FxTime")
+        container = NSPersistentContainer(name: "Data")
         container.loadPersistentStores { (description, error) in
             if let error = error {
                 fatalError("Unable to load persistent stores: \(error)")

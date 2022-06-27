@@ -12,13 +12,14 @@ struct SetGoalView: View {
     
 
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @FetchRequest(
-        entity: FxTime.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \FxTime.dateAdded, ascending: true)
-        ]
-    ) var data: FetchedResults<FxTime>
+//    @FetchRequest(
+//        entity: FxTime.entity(),
+//        sortDescriptors: [
+//            NSSortDescriptor(keyPath: \FxTime.dateAdded, ascending: true)
+//        ]
+//    ) var data: FetchedResults<FxTime>
 
+    @StateObject var vmData = CoreDataViewModel()
     @Environment(\.managedObjectContext) var context
     @State var currenMinutes: Double = 0
     
@@ -71,20 +72,20 @@ struct SetGoalView: View {
             .tint(.blue)
         }
         .onAppear{
-            currenMinutes = self.data.last?.dailyGoal ?? 0
+            currenMinutes = vmData.fxTime.last?.dailyGoal ?? 0
         }
     }
     
     
     func addMinutes() {
-        if self.data.last?.dailyGoal ?? 0 < 990 {
+        if vmData.fxTime.last?.dailyGoal ?? 0 < 990 {
             currenMinutes += 5
 //            self.data.last?.dailyGoal += 5
         }
     }
     
     func substractMinutes() {
-        if self.data.last?.dailyGoal ?? 0 > 0 {
+        if vmData.fxTime.last?.dailyGoal ?? 0 > 0 {
 //            self.data.last?.dailyGoal -= 5
             currenMinutes -= 5
          }
