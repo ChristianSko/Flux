@@ -27,8 +27,10 @@ struct SessionView: View {
                         ForEach(0..<2) {sessions in
                             VStack{
                                 ForEach(0..<3) { number in
-                                    Button {
-                                     self.defaultTimer.toggle()
+                                    NavigationLink {
+                                        TimerView(totalCyles: sessionsCycles[number],
+                                                  session: sessionLengthMinutes[sessions] * 60,
+                                                  sucessFullSessionTime: sessionLengthMinutes[sessions])
                                     } label: {
                                          SessionButton(sessionCycles: sessionsCycles[number],
                                                       sessionTime: sessionLengthMinutes[sessions],
