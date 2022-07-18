@@ -57,11 +57,13 @@ struct TimerView: View {
         .navigationBarHidden(true)
         .interactiveDismissDisabled()
         .onAppear{
-            let formattedTo = fxTimerViewModel.secondsToHoursMinutesSeconds(session)
-            fxTimerViewModel.hour = formattedTo.hours
-            fxTimerViewModel.minutes = formattedTo.minutes
-            fxTimerViewModel.seconds = formattedTo.seconds
-            fxTimerViewModel.startTimer()
+            if !fxTimerViewModel.isStarted {
+                let formattedTo = fxTimerViewModel.secondsToHoursMinutesSeconds(session)
+                fxTimerViewModel.hour = formattedTo.hours
+                fxTimerViewModel.minutes = formattedTo.minutes
+                fxTimerViewModel.seconds = formattedTo.seconds
+                fxTimerViewModel.startTimer()
+            }
         }
         .navigationBarBackButtonHidden(true)
         .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect()) { _ in
